@@ -13,7 +13,7 @@ class TagNowController {
       return keyword.timestamp.getTime() >= now.getTime() - 10 * 60 * 1000;
     });
 
-    let mostUsedKeywords: Hash<number> = {};
+    const mostUsedKeywords: Hash<number> = {};
 
     lastTenMinutes.forEach(({ keyword }: { keyword: string }) => {
       if (mostUsedKeywords[`${keyword}`]) {

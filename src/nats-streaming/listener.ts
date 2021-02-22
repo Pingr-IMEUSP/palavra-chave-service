@@ -20,7 +20,12 @@ export function setupListeners(): void {
     const ping: PingInterface = JSON.parse(msg.getData() as string);
 
     ping.hashtags.forEach((hashtag: string) => {
+      if (!Keyword.all.find(({ keyword }: { keyword: string }) => keyword === hashtag)) {
+        stan.publish('KEYWORD_CREATED', JSON.stringify(hashtag));
+      }
+
       Keyword.all.push({ keyword: hashtag, timestamp: new Date() });
+
       console.log('[PING_CREATED_WITH_KEYWORDS]:', hashtag);
     });
   });
