@@ -1,4 +1,5 @@
 export interface KeywordInterface {
+  id: number;
   keyword: string;
   timestamp: Date;
 }
