@@ -3,6 +3,7 @@ import * as Router from 'koa-router';
 import * as bodyparser from 'koa-bodyparser';
 import * as json from 'koa-json';
 import * as cors from '@koa/cors';
+import TagNowController from './controller';
 
 export const app: Koa = new Koa();
 
@@ -12,3 +13,5 @@ app.use(bodyparser());
 app.use(json());
 app.use(cors());
 app.use(router.routes()).use(router.allowedMethods());
+
+router.get('/tgnw', TagNowController.show);
